@@ -67,13 +67,11 @@ pipeline {
                     withSonarQubeEnv('sonarqube') {
                         
                         sh """
-                             gradle clean build sonar \
-                             
-                             -Dsonar.projectKey=gradle \
-                             -Dsonar.projectName=gradle \
+                        gradle clean build sonar \
+                        -Dsonar.projectKey=gradle \
+                        -Dsonar.projectName=gradle \
                         """
                     }
-                        
                 }
             }
         }
