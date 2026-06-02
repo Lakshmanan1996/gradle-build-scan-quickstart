@@ -86,7 +86,7 @@ pipeline {
         stage('Quality Gate') {
             agent { label 'workernode2' }
             steps {
-                timeout(time: 2, unit: 'MINUTES') {
+                timeout(time: 10, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
