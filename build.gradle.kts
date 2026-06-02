@@ -1,5 +1,7 @@
 plugins {
     id("java")
+    id("org.sonarqube") version "6.0.1.5171"
+
 }
 
 repositories {
@@ -19,5 +21,12 @@ tasks.test {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "gradle")
+        property("sonar.projectName", "gradle")
     }
 }
