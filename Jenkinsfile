@@ -64,19 +64,19 @@ pipeline {
                     def scannerHome = tool 'SonarQubeScanner'
                     
                     withSonarQubeEnv('sonarqube') {
-                        dir('EmployeeManagement') {
+                        
                         sh """
                              gradle clean build -x test \
                              -DskipTests \
                              -Dsonar.projectKey=gradle \
                              -Dsonar.projectName=gradle \
                         """
-                        }
-                        
                     }
+                        
                 }
             }
         }
+        
 
         /* =====================================================
            QUALITY GATE
