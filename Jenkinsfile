@@ -90,31 +90,7 @@ pipeline {
             }
         }
 
-        /* =====================================================
-           OWASP DEPENDENCY CHECK
-        ===================================================== */
-
-        stage('OWASP Dependency Check') {
-            agent { label 'workernode2' }
-
-            steps {
-                unstash 'source-code'
-
-                sh '''
-                /opt/dependency-check/bin/dependency-check.sh \
-                --scan ${WORKSPACE} \
-                --format ALL \
-                --out ${WORKSPACE}/dependency-check-report \
-                --data /var/jenkins_home/odc-data \
-                --noupdate \
-                --nvdApiKey YOUR_NVD_API_KEY \
-                --exclude **/node_modules/** \
-                --exclude **/dist/** \
-                --exclude **/target/** \
-                --exclude **/.git/**
-                '''
-            }
-        }
+        
 
         /* =====================================================
            DOCKER BUILD
