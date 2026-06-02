@@ -100,24 +100,19 @@ pipeline {
             steps {
                 unstash 'source-code'
 
-                dependencyCheck(
-                    odcInstallation: 'OWASP-DC',
-                    additionalArguments: '''
-                        --scan ${WORKSPACE}
-                        --format ALL
-                        --out ${WORKSPACE}/dependency-check-report
-
-                        --data /var/jenkins_home/odc-data
-                        --noupdate
-
-                        --nvdApiKey YOUR_NVD_API_KEY
-
-                        --exclude **/node_modules/**
-                        --exclude **/dist/**
-                        --exclude **/target/**
-                        --exclude **/.git/**
-                    '''
-                )   
+                sh '''
+                /opt/dependency-check/bin/dependency-check.sh \
+                --scan ${WORKSPACE} \
+                --format ALL \
+                --out ${WORKSPACE}/dependency-check-report \
+                --data /var/jenkins_home/odc-data \
+                --noupdate \
+                --nvdApiKey YOUR_NVD_API_KEY \
+                --exclude **/node_modules/** \
+                --exclude **/dist/** \
+                --exclude **/target/** \
+                --exclude **/.git/**
+                '''
             }
         }
 
