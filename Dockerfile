@@ -9,7 +9,7 @@ WORKDIR /app
 COPY gradlew .
 COPY gradle gradle
 COPY build.gradle .
-
+COPY settings.gradle.kts .
 
 # Copy source code
 COPY src src
