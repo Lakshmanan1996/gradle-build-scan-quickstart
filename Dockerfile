@@ -18,7 +18,7 @@ COPY src src
 RUN chmod +x gradlew
 
 # Build the jar (skip tests optional)
-RUN ./gradlew clean bootJar -x test
+RUN ./gradlew build -x test
 
 
 # =========================
