@@ -1,7 +1,7 @@
 # =========================
 # Gradle Build
 # =========================
-FROM gradle:8.7-jdk17 AS build
+FROM gradle:8.7-jdk21 AS build
 
 WORKDIR /app
 
@@ -24,7 +24,7 @@ RUN ./gradlew clean bootJar -x test
 # =========================
 # Stage 2: Runtime stage
 # =========================
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
